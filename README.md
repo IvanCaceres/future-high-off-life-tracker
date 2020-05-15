@@ -1,10 +1,20 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a PHP/Laravel application task scheduler that scrapes the 150 different https://highoff.life/ (High Off Life Album Promo) websites for the release of Future's High Off Life Album.
+The promotional campaign promises a leaked track whose location is ephemeral and changes every 10 minutes or so to a new https://highoff.life/ domain name.
+This project uses the official promo campaign's AWS api to cycle through the 150 domain names requesting each one to find the correct location.
 
-## Available Scripts
+Demo: http://tacobreathsoftware.com/future-high-off-life-leak-tracker
 
-In the project directory, you can run:
+![Demo gif](demo.gif)
 
-### `yarn start`
+
+This project was built  with PHP / Laravel for the backend application and job runner, as well as [Create React App](https://github.com/facebook/create-react-app) for the frontend application.
+
+## Available React / Frontend Scripts
+
+In the root project directory, you can run:
+
+### `npm start`
+
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -23,46 +33,8 @@ Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+You can then copy the build files into the backend public directory:
+### `/backend/delivery/public`
+Replacing what's in there will stage the new files for visitors, you must also update the markup in the backend index template `/backend/delivery/resources/views/welcome.blade.php` by copying the build html markup from the `build/index.html` file.
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
