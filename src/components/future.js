@@ -52,7 +52,7 @@ export default function FutureTracker() {
   }, []);
   // fetch url on initial load
   useEffect(() => {
-    axios.get("http://localhost/info").then(function(response) {
+    axios.get("/info").then(function(response) {
       // handle success
       setLeakUrl(response.data);
     });
