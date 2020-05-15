@@ -1,10 +1,34 @@
 .App {
   text-align: center;
+  background: silver;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: solid 2px #3a0e3a;
+  background-image: url("future-head.jpg");
+  background-position: -133px center;
+  background-size: cover;
   pointer-events: none;
+}
+
+.future-link {
+  border-radius: 16px;
+  width: 300px;
+  overflow: hidden;
+}
+.future-link img {
+  width: 100%;
+}
+
+.future-link:hover {
+  opacity: 0.5;
+}
+
+.hol-red {
+  color: rgb(226,78,38);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,7 +38,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
