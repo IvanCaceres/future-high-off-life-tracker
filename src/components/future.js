@@ -15,29 +15,29 @@ export default function FutureTracker() {
   };
   // setup countdown timer
   useEffect(() => {
-    let end = moment('2020-05-15T00');
+    let end = moment("2020-05-15T00");
     let duration = moment.duration(end.diff(moment()));
     if (duration > 0) {
       setCountdown(
         addZero(duration.hours()) +
-        ":" +
-        addZero(duration.minutes()) +
-        ":" +
-        addZero(duration.seconds())
+          ":" +
+          addZero(duration.minutes()) +
+          ":" +
+          addZero(duration.seconds())
       );
     }
 
     // Update the count down every 1 second
-    timerRef.current = setInterval(function () {
+    timerRef.current = setInterval(function() {
       let duration = moment.duration(end.diff(moment()));
 
       // Output the result in an element with id="demo"
       setCountdown(
         addZero(duration.hours()) +
-        ":" +
-        addZero(duration.minutes()) +
-        ":" +
-        addZero(duration.seconds())
+          ":" +
+          addZero(duration.minutes()) +
+          ":" +
+          addZero(duration.seconds())
       );
 
       // If the count down is over, write some text
@@ -52,9 +52,11 @@ export default function FutureTracker() {
   }, []);
   // fetch url on initial load
   useEffect(() => {
-    axios.get("/info").then(function (response) {
+    axios.get("/info").then(function(response) {
       // handle success
-      // setLeakUrl(response.data);
+      if (typeof response.data === "string") {
+        setLeakUrl(response.data);
+      }
     });
   }, []);
 
@@ -66,7 +68,9 @@ export default function FutureTracker() {
 
     channelRef.current = pusherRef.current.subscribe("my-channel");
     channelRef.current.bind("my-event", (data) => {
-      // setLeakUrl(data.url);
+      if (data.url && typeof data.url === "string") {
+        setLeakUrl(data.url);
+      }
     });
     return () => {
       channelRef.current.unbind();
@@ -86,7 +90,11 @@ export default function FutureTracker() {
       <a className="leakurl" href={leakUrl}>
         {leakUrl}
       </a>
-      <p className="hol-red">HIGH OFF LIFE {countdown === "the album is out now!" ? " " : "releases in"} {countdown}</p>
+      <p className="hol-red">
+        HIGH OFF LIFE{" "}
+        {countdown === "the album is out now!" ? " " : "releases in"}{" "}
+        {countdown}
+      </p>
     </>
   );
 }
