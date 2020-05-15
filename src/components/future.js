@@ -54,7 +54,7 @@ export default function FutureTracker() {
   useEffect(() => {
     axios.get("/info").then(function (response) {
       // handle success
-      setLeakUrl(response.data);
+      // setLeakUrl(response.data);
     });
   }, []);
 
@@ -66,7 +66,7 @@ export default function FutureTracker() {
 
     channelRef.current = pusherRef.current.subscribe("my-channel");
     channelRef.current.bind("my-event", (data) => {
-      setLeakUrl(data.url);
+      // setLeakUrl(data.url);
     });
     return () => {
       channelRef.current.unbind();
